@@ -44,7 +44,7 @@ function RenderLandingPage(props) {
         </div>
         <div>
           <img src={GrantRatesOverTimeImg} alt="rates graph" />
-          <p>Search Grant Rates by Over Time</p>
+          <p>Search Grant Rates Over Time</p>
         </div>
       </div>
 
