@@ -3,10 +3,13 @@ import { Image } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const { primary_accent_color } = colors;
 
 function HeaderContent() {
+  const { loginWithRedirect, logout, user } = useAuth0();
+
   return (
     <div
       style={{
@@ -28,6 +31,18 @@ function HeaderContent() {
         <Link to="/graphs" style={{ color: '#E2F0F7' }}>
           Graphs
         </Link>
+        {user ? (
+          <button
+            onClick={() => {
+              logout();
+              loginWithRedirect();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button onClick={() => loginWithRedirect()}>Login</button>
+        )}
       </div>
     </div>
   );
